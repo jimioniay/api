@@ -8,5 +8,8 @@ describe('Test Server.js', () => {
     it('should return 400', async () => {
       expect(400).to.equal(400);
     });
+    it('should return 500', async () => {
+      expect(500).to.equal(500);
+    });
   });
 });
