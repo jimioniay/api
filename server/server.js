@@ -3,6 +3,7 @@ import 'babel-polyfill';
 import express from 'express';
 import helmet from 'helmet';
 import moment from 'moment';
+import fetch from 'node-fetch';
 import 'dotenv/config';
 
 const app = express();
@@ -21,10 +22,16 @@ const time = {
   date_moment_timestamp,
   offset,
   utc_convert,
-  process_env: process.env,
 };
-app.use('', (req, res, next) => {
-  console.log('req --> ', req.header);
+
+const api = async () =>
+  await fetch('http://localhost:4000')
+    .then(res => res.json())
+    .then(json => json)
+    .catch(error => error);
+
+app.use('/', async (req, res, next) => {
+  console.log('api --> ', await api());
   return res.json({
     status: true,
     data: time,
