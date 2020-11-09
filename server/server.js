@@ -6,7 +6,7 @@ import moment from 'moment';
 import 'dotenv/config';
 
 const app = express();
-// app.use(helmet());
+app.use(helmet());
 
 const timestamp = Date.now();
 const moment_timestamp = moment().utc();
