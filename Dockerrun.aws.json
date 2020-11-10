@@ -1,0 +1,35 @@
+{
+  "AWSEBDockerrunVersion": "2",
+  "containerDefinitions": [
+    {
+      "name": "api",
+      "links": ["api"],
+      "image": "jimipayne/api",
+      "cpu": "100",
+      "memory": "1000",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5008,
+          "hostPort": 8081,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "DEV_SERVER_PORT",
+          "value": "5009"
+        }
+      ],
+
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/fargate-task-definition",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

@@ -12,3 +12,14 @@ script:
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push jimipayne/api
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: docker-api
+  env: DockerApi-env
+  bucket_name: elasticbeanstalk-us-east-1-796354769654
+  bucket_path: docker-api
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_ID
+  secret_access_key: $AWS_SECRET_KEY
