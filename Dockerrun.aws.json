@@ -4,8 +4,6 @@
     {
       "name": "api",
       "image": "jimipayne/api",
-      "cpu": "100",
-      "memory": "1000",
       "essential": true,
       "portMappings": [
         {
@@ -19,16 +17,7 @@
           "name": "DEV_SERVER_PORT",
           "value": "80"
         }
-      ],
-
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/fargate-task-definition",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
-      }
+      ]
     }
   ]
 }
