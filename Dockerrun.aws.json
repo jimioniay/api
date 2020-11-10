@@ -3,7 +3,6 @@
   "containerDefinitions": [
     {
       "name": "api",
-      "links": ["api"],
       "image": "jimipayne/api",
       "cpu": "100",
       "memory": "1000",
