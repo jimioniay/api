@@ -15,10 +15,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: docker-api
-  env: DockerApi-env
+  app: docker-apic
+  env: DockerApic-env-1
   bucket_name: elasticbeanstalk-us-east-1-796354769654
-  bucket_path: docker-api
+  bucket_path: docker-apic
   on:
     branch: master
   access_key_id: $AWS_ACCESS_ID
