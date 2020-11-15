@@ -16,8 +16,10 @@ let options = {
   },
 };
 
-SQS.createQueue(options, (error, data) => {
+const SQSS = SQS.createQueue(options, (error, data) => {
   if (error)
     return console.log('error --> ', error, 'error stack --> ', error.stack);
   console.log('Successfully created SQS Queue --> ', data);
 });
+
+module.exports = SQSS;

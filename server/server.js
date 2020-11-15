@@ -6,6 +6,8 @@ import moment from 'moment';
 import fetch from 'node-fetch';
 import 'dotenv/config';
 
+import SQS from '../queue/sqs';
+
 const app = express();
 app.use(helmet());
 
@@ -24,14 +26,7 @@ const time = {
   utc_convert,
 };
 
-const api = async () =>
-  await fetch('http://localhost:4000')
-    .then(res => res.json())
-    .then(json => json)
-    .catch(error => error);
-
 app.use('/', async (req, res, next) => {
-  console.log('api --> ', await api());
   return res.json({
     status: true,
     data: time,
@@ -43,5 +38,6 @@ const PORT = process.env.PORT || process.env.DEV_SERVER_PORT;
 
 app.listen(PORT, error => {
   if (error) console.log('An error occured --> ', error);
-  console.log(console.log(`Server started on port ${PORT}...`));
+  console.log(`Server started on port ${PORT}...`);
+  console.log('env --> ', process.env);
 });
